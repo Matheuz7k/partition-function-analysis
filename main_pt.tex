@@ -1,0 +1,84 @@
+\documentclass[12pt, a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage[margin=1in]{geometry}
+\setlength{\parskip}{1.5ex}
+\linespread{1.2}
+\newtheorem{theorem}{Teorema}[section]
+\newtheorem{lemma}[theorem]{Lema}
+\newtheorem{proposition}[theorem]{Proposição}
+\newtheorem{corollary}[theorem-]{Corolário}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definição}
+\newtheorem{example}[theorem]{Exemplo}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Observação}
+
+\title{\textbf{Uma Análise Abrangente da Função de Partição:\\ Das Identidades de Euler à Fórmula Assintótica de Hardy-Ramanujan}}
+\author{Matheus Sales dos Santos}
+\date{15 de setembro de 2025}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+\noindent Este trabalho oferece uma exploração detalhada da função de partição de inteiros, $p(n)$, um dos objetos mais fascinantes na intersecção da combinatória e da teoria dos números. Iniciamos com as definições fundamentais e representações visuais, como os diagramas de Ferrers, para construir uma base intuitiva. Em seguida, mergulhamos no trabalho pioneiro de Leonhard Euler, que introduziu a poderosa ferramenta das funções geradoras. Investigamos o célebre Teorema dos Números Pentagonais de Euler e demonstramos como ele leva a uma elegante e eficiente fórmula de recorrência para $p(n)$. O clímax do trabalho é a apresentação da fórmula assintótica de Hardy e Ramanujan, um marco da teoria analítica dos números que descreve o crescimento de $p(n)$ com precisão notável.
+\end{abstract}
+
+\tableofcontents
+\newpage
+
+\section{Introdução: A Simplicidade Enganosa das Partições}
+A matemática é repleta de problemas cuja formulação é tão simples que podem ser explicados a uma criança, mas cuja solução exige ferramentas de extraordinária sofisticação. A função de partição de inteiros, $p(n)$, é um exemplo paradigmático desse fenômeno.
+\begin{definition}[Partição de um Inteiro]
+Uma \textbf{partição} de um inteiro positivo $n$ é uma maneira de escrever $n$ como uma soma de inteiros positivos. A ordem das partes não importa. A função de partição, $p(n)$, conta o número de partições distintas de $n$.
+\end{definition}
+\begin{example}
+As partições de $n=5$ são: 5, 4+1, 3+2, 3+1+1, 2+2+1, 2+1+1+1, 1+1+1+1+1. Portanto, $p(5) = 7$.
+\end{example}
+
+\section{Visualizando Partições: Diagramas de Ferrers}
+Um diagrama de Ferrers representa uma partição de $n$ como um padrão de $n$ pontos organizados em linhas, onde o comprimento de cada linha corresponde a uma parte da partição. A conjugação de um diagrama (transpor linhas e colunas) prova teoremas combinatórios de forma elegante.
+\begin{theorem}
+O número de partições de $n$ em no máximo $k$ partes é igual ao número de partições de $n$ onde nenhuma parte é maior que $k$.
+\end{theorem}
+
+\section{A Função Geradora de Euler}
+A função geradora para $p(n)$ é dada pelo produto infinito:
+\begin{equation}
+P(x) = \sum_{n=0}^{\infty} p(n)x^n = \prod_{k=1}^{\infty} \frac{1}{1-x^k}
+\end{equation}
+Esta identidade transforma um problema de contagem em um problema de análise de séries de potências.
+
+\section{O Teorema dos Números Pentagonais}
+Euler descobriu uma identidade notável para o inverso da função geradora:
+\begin{theorem}[Teorema dos Números Pentagonais]
+$\prod_{k=1}^{\infty} (1-x^k) = \sum_{j=-\infty}^{\infty} (-1)^j x^{j(3j-1)/2}$
+\end{theorem}
+Esta identidade leva a uma fórmula de recorrência eficiente para $p(n)$:
+$p(n) = p(n-1) + p(n-2) - p(n-5) - p(n-7) + \cdots$
+
+\section{A Fórmula Assintótica de Hardy e Ramanujan}
+Em 1918, Hardy e Ramanujan usaram o método do círculo da análise complexa para encontrar uma fórmula assintótica para $p(n)$.
+\begin{theorem}[Fórmula Assintótica]
+Para $n$ grande, $p(n) \sim \frac{1}{4n\sqrt{3}} e^{\pi \sqrt{\frac{2n}{3}}}$
+\end{theorem}
+Esta fórmula descreve o crescimento de $p(n)$ com uma precisão impressionante.
+
+\section{Conclusão}
+O estudo da função de partição $p(n)$ ilustra a profunda conexão entre combinatória, teoria dos números e análise complexa, mostrando como diferentes áreas da matemática se unem para resolver um problema de aparência simples.
+
+\begin{thebibliography}{9}
+\bibitem{andrews} Andrews, G. E. (1976). \textit{The Theory of Partitions}. Addison-Wesley.
+\bibitem{apostol} Apostol, T. M. (1976). \textit{Introduction to Analytic Number Theory}. Springer.
+\bibitem{hardyram} Hardy, G. H., \& Ramanujan, S. (1918). Asymptotic Formulæ in Combinatory Analysis. \textit{Proceedings of the London Mathematical Society}, s2-17(1), 75–115.
+\end{thebibliography}
+
+\end{document}
