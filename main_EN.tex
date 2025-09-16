@@ -1,0 +1,84 @@
+\documentclass[12pt, a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage[margin=1in]{geometry}
+\setlength{\parskip}{1.5ex}
+\linespread{1.2}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+\title{\textbf{A Comprehensive Analysis of the Partition Function:\\ From Euler's Identities to the Hardy-Ramanujan Asymptotic Formula}}
+\author{Matheus Sales dos Santos}
+\date{September 15, 2025}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+\noindent This paper offers a detailed exploration of the integer partition function, $p(n)$, one of the most fascinating objects at the intersection of combinatorics and number theory. We begin with fundamental definitions and visual representations, such as Ferrers diagrams, to build an intuitive foundation. We then delve into the pioneering work of Leonhard Euler, who introduced the powerful tool of generating functions. We investigate Euler's celebrated Pentagonal Number Theorem and demonstrate how it leads to an elegant and efficient recurrence relation for $p(n)$. The climax of the paper is the presentation of the Hardy-Ramanujan asymptotic formula, a landmark of analytic number theory that describes the growth of $p(n)$ with remarkable precision.
+\end{abstract}
+
+\tableofcontents
+\newpage
+
+\section{Introduction: The Deceptive Simplicity of Partitions}
+Mathematics is replete with problems whose formulation is so simple they can be explained to a child, yet whose solution requires tools of extraordinary sophistication. The integer partition function, $p(n)$, is a paradigmatic example of this phenomenon.
+\begin{definition}[Partition of an Integer]
+A \textbf{partition} of a positive integer $n$ is a way of writing $n$ as a sum of positive integers. The order of the parts does not matter. The partition function, $p(n)$, counts the number of distinct partitions of $n$.
+\end{definition}
+\begin{example}
+The partitions of $n=5$ are: 5, 4+1, 3+2, 3+1+1, 2+2+1, 2+1+1+1, 1+1+1+1+1. Therefore, $p(5) = 7$.
+\end{example}
+
+\section{Visualizing Partitions: Ferrers Diagrams}
+A Ferrers diagram represents a partition of $n$ as a pattern of $n$ dots arranged in rows, where the length of each row corresponds to a part. The conjugation of a diagram (transposing rows and columns) elegantly proves combinatorial theorems.
+\begin{theorem}
+The number of partitions of $n$ into at most $k$ parts is equal to the number of partitions of $n$ where no part is larger than $k$.
+\end{theorem}
+
+\section{Euler's Generating Function}
+The generating function for $p(n)$ is given by the infinite product:
+\begin{equation}
+P(x) = \sum_{n=0}^{\infty} p(n)x^n = \prod_{k=1}^{\infty} \frac{1}{1-x^k}
+\end{equation}
+This identity transforms a discrete counting problem into a problem of power series analysis.
+
+\section{The Pentagonal Number Theorem}
+Euler discovered a remarkable identity for the reciprocal of the generating function:
+\begin{theorem}[Pentagonal Number Theorem]
+$\prod_{k=1}^{\infty} (1-x^k) = \sum_{j=-\infty}^{\infty} (-1)^j x^{j(3j-1)/2}$
+\end{theorem}
+This identity leads to an efficient recurrence relation for $p(n)$:
+$p(n) = p(n-1) + p(n-2) - p(n-5) - p(n-7) + \cdots$
+
+\section{The Hardy-Ramanujan Asymptotic Formula}
+In 1918, Hardy and Ramanujan used the circle method from complex analysis to find an asymptotic formula for $p(n)$.
+\begin{theorem}[Asymptotic Formula]
+For large $n$, $p(n) \sim \frac{1}{4n\sqrt{3}} e^{\pi \sqrt{\frac{2n}{3}}}$
+\end{theorem}
+This formula describes the growth of $p(n)$ with stunning accuracy.
+
+\section{Conclusion}
+The study of the partition function $p(n)$ illustrates the deep connection between combinatorics, number theory, and complex analysis, showing how different mathematical fields unite to solve a seemingly simple problem.
+
+\begin{thebibliography}{9}
+\bibitem{andrews} Andrews, G. E. (1976). \textit{The Theory of Partitions}. Addison-Wesley.
+\bibitem{apostol} Apostol, T. M. (1976). \textit{Introduction to Analytic Number Theory}. Springer.
+\bibitem{hardyram} Hardy, G. H., \& Ramanujan, S. (1918). Asymptotic Formulæ in Combinatory Analysis. \textit{Proceedings of the London Mathematical Society}, s2-17(1), 75–115.
+\end{thebibliography}
+
+\end{document}
